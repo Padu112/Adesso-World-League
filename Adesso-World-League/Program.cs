@@ -1,7 +1,6 @@
 using Adesso_World_League.Helpers;
 using Adesso_World_League.Repository;
 using Adesso_World_League.Repository.Interfaces;
-using Adesso_World_League.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -4,7 +4,6 @@ using Adesso_World_League.Models;
 using Adesso_World_League.Repository.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace Adesso_World_League.Repository
@@ -34,9 +33,9 @@ namespace Adesso_World_League.Repository
 
         public async Task<SavedGroups> SaveGroups(SavedGroups savedGroup)
         {
-             _context.SavedGroups.Add(savedGroup);
-             _context.SaveChangesAsync();
-            
+            _context.SavedGroups.Add(savedGroup);
+            _context.SaveChangesAsync();
+
             return savedGroup;
         }
     }

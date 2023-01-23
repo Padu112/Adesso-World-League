@@ -3,8 +3,6 @@ using Adesso_World_League.Repository.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Linq;
-
 
 namespace Adesso_World_League.Controllers
 {
@@ -15,40 +13,38 @@ namespace Adesso_World_League.Controllers
         private ICountriesRepository _repository;
         private readonly IMapper _mapper;
 
-        public GroupingController(ICountriesRepository repository,  IMapper mapper)
+        public GroupingController(ICountriesRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
         }
 
-        
         [HttpGet("GetAllCountries")]
         public IActionResult GetAllCountries()
         {
             return Ok(_repository.GetAllCountries());
         }
 
-        
         [HttpGet("GetAllTeams")]
         public IActionResult GetAllTeams()
         {
             return Ok(_repository.GetAllTeams());
         }
 
-        
-        [HttpGet("CreateGroupingAsync/{size}/{firstName}/{lastName}")]
-        public async Task<IActionResult> CreateGroupingAsync(int size, string firstName, string lastName)
+        [HttpGet("CreateGroupingAsync/{GroupSize}/{firstName}/{lastName}")]
+        public async Task<IActionResult> CreateGroupingAsync(int GroupSize, string firstName, string lastName)
         {
             var teams = await _repository.GetAllTeams();
 
-            var createdGroups = Helpers.CreateGroup.CreateGrouping(size, teams, firstName, lastName);
+            var createdGroups = Helpers.CreateGroup.CreateGrouping(GroupSize, teams, firstName, lastName);
             await _repository.SaveGroups(new SavedGroups
             {
                 FirstName = firstName,
                 LastName = lastName,
                 Grouping = JsonConvert.SerializeObject(createdGroups)
-
             });
+
+            //to do unit tests
 
             return Ok(createdGroups);
         }

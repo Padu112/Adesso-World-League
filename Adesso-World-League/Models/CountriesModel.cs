@@ -1,6 +1,4 @@
-﻿using Adesso_World_League.Entities;
-
-namespace Adesso_World_League.Models
+﻿namespace Adesso_World_League.Models
 {
     public class CountriesModel
     {

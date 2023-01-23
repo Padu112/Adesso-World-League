@@ -1,5 +1,4 @@
 ﻿using Adesso_World_League.Entities;
-using Adesso_World_League.Models;
 
 namespace Adesso_World_League.Helpers
 {
@@ -44,9 +43,8 @@ namespace Adesso_World_League.Helpers
                     teamsCopy.Remove(team);
                 }
             }
-            
-            
-            return new AllocatedGroups { Groups = groups};
+
+            return new AllocatedGroups { Groups = groups };
         }
     }
 }

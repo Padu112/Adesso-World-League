@@ -18,6 +18,8 @@ public class AutoMapperProfiles : Profile
 
 
 
+        CreateMap<AllocatedGroups, AllocatedGroupsModel>()
+           .ForMember(d => d.Groups, o => o.MapFrom(s => s.Groups));
 
     }
     }
